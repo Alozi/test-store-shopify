@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-info-product.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-info-product.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+<div class="info-product">
+  <div class="info-product__wrapper">
+     <div class="info-product__image">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 3840
+            | image_tag:
+              loading: 'lazy',
+              width: section.settings.image.width,
+              widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+          }}
+        {%- endif -%}
+      </div>
+
+      <div class="info-product__text-wrapper">
+        {%- if section.settings.title != blank -%}
+          <h2 class="info-product__title">
+              {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="info-product__text">
+              {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Info product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-banner.settings.image.label"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "default": "<p>Lorem impsum</p>",
+      "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+      "label": "t:sections.rich-text.blocks.caption.settings.text.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info product"
+    }
+  ]
+}
+{% endschema %}

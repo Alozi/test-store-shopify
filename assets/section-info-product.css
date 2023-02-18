@@ -1,0 +1,40 @@
+.info-product {
+  max-width: none;
+  padding: 5px 15px;
+}
+
+@media screen and (min-width: 750px) {
+  .info-product {
+    max-width: 95rem;
+    margin: 0 auto;
+    padding: 10px 30px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .info-product__wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+}
+
+.info-product__image {
+  text-align: center;
+}
+
+.info-product__title {
+  font-weight: 600;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .info-product__title {
+    text-align: left;
+  }
+}
+
+.info-product__text {
+  font-size: 22px;
+}
